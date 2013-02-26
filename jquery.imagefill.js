@@ -109,7 +109,7 @@
 
         /**
          * Collection of DOM nodes that are managed by this plugin instance
-         * @type {object}
+         * @type {jQuery object}
          */
         $spaces: {},
 
@@ -120,8 +120,8 @@
         css3: false,
 
         /**
-         *
-         *
+         * Is set to true if the user agent string is that of a MSIE browser
+         * @type {boolean}
          */
         isIE: false,
 
@@ -199,10 +199,10 @@
          * it.
          *
          * @private
-         * @param {object} $el jQueryified target element
+         * @param {jQuery object} $el jQueryified target element
          * @param {integer} imgWidth Image width
          * @param {integer} imgHeight Image height
-         * @return {void}
+         * @return {undefined}
          */
         injectImage: function($el, imgWidth, imgHeight)
         {
@@ -239,16 +239,16 @@
                         alt: ''
                     })
                     //.css(styles)
-                    .data('llif-position', this.getBackgroundPosition($el))
-                    //.data('llif-position', $el.css('background-position'))
+                    .data('jbif-position', this.getBackgroundPosition($el))
+                    //.data('jbif-position', $el.css('background-position'))
                     .appendTo($bg);
 
                 // Set image dimensions and position it
                 this.drawImage($img, spaceWidth, spaceHeight, imgWidth, imgHeight);
 
                 // Store reference to element for easy access
-                $el.data('llif-bg', $bg);
-                $el.data('llif-img', $img);
+                $el.data('jbif-bg', $bg);
+                $el.data('jbif-img', $img);
 
                 // Append pseudo background element to DOM
                 $bg.appendTo($el);
@@ -264,7 +264,7 @@
          * @param {integer} spaceHeight Current height of the target element
          * @param {integer} imgWidth Image width
          * @param {integer} imgHeight Image height
-         * @return {void}
+         * @return {undefined}
          */
         drawImage: function($img, spaceWidth, spaceHeight, imgWidth, imgHeight)
         {
@@ -273,7 +273,7 @@
                 spaceRatio = spaceWidth / spaceHeight,
                 targetHeight = 0, targetWidth = 0,
                 styles = {},
-                position = $img.data('llif-position'),
+                position = $img.data('jbif-position'),
                 vertical = '0%', horizontal = '0%',
                 fill;
 
@@ -378,15 +378,15 @@
         /**
          * Allows manual trigger of redraw
          *
-         * @return {void}
+         * @return {undefined}
          */
         refresh: function()
         {
             var thisRef = this;
             this.$spaces.each(function(idx) {
                 var $el = $(this),
-                    $bg = $el.data('llif-bg'),
-                    $img = $el.data('llif-img'),
+                    $bg = $el.data('jbif-bg'),
+                    $img = $el.data('jbif-img'),
                     spaceWidth = $el.width(),
                     spaceHeight = $el.height();
                 // If no background image was attached to the targetted element,
@@ -415,4 +415,3 @@
     };
 
 })(jQuery);
-
