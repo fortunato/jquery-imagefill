@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Example</title>
+        <script src="../libs/modernizr-2.6.2-min.js"></script>
+        <link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="css/style.css" />
+    </head>
+    <body>
+
+        <div id="image" style="background-image: url(images/image.jpeg);"></div>
+
+        <script src="../libs/jquery-1.9.1.js"></script>
+        <script src="../jquery.imagefill.js"></script>
+        <script>
+
+            var imageFill =  $('#image').ImageFill({
+                position: '50% 50%',
+                debug: false,
+                method: 'cover'
+            });
+
+        </script>
+        
+    </body>
+</html>
